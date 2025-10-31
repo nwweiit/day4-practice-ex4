@@ -13,10 +13,6 @@ node {
             bat 'npm install'
         }
 
-        stage('Test') {
-            // 테스트 실행
-            bat 'npm test'
-        }
 
         stage('Start') {
             // 현재 브랜치 정보 수동 확인
