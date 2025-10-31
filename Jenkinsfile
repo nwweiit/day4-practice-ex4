@@ -13,7 +13,14 @@ node {
             bat 'npm install'
         }
 
+        stage('Test') {
+            // 테스트 실행
+            bat 'npm test -- --watchAll=false --passWithNoTests'
+        }
 
+
+//이렇게 쓰거나 아니면 아예 test 부분 삭제하거나.
+        
         stage('Start') {
             // 현재 브랜치 정보 수동 확인
             def branch = env.GIT_BRANCH ?: 'unknown'
