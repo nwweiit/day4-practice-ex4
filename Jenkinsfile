@@ -1,6 +1,6 @@
 node {
     // ✅ 환경 변수 설정
-    env.PATH = "/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+    //env.PATH = "/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
     try {
         stage('Checkout') {
@@ -10,12 +10,12 @@ node {
 
         stage('Install') {
             // 의존성 설치
-            sh 'npm install'
+            bat 'npm install'
         }
 
         stage('Test') {
             // 테스트 실행
-            sh 'npm test'
+            bat 'npm test'
         }
 
         stage('Start') {
@@ -26,7 +26,7 @@ node {
             // 브랜치 정보가 없거나 unknown이면 main으로 간주
             if (branch == 'main' || branch == 'origin/main' || branch == 'unknown') {
                 echo "브랜치 정보가 없거나 main으로 간주됨 → npm start 실행"
-                sh 'npm start'
+                bat 'npm start'
             } else {
                 echo "Start stage skipped (현재 브랜치가 main이 아님)"
             }
